@@ -8,6 +8,12 @@ const addStatus = (status) =>
   (document.getElementById("status").innerHTML =
     document.getElementById("status").innerHTML + "<p>" + status + "</p>");
 
+const printAnimal = (animal) => {
+  addStatus(
+    `Name: ${animal.naam}; Type: ${animal.type}; Age: ${animal.leeftijd}`
+  );
+};
+
 const printAnimals = (animals, status) => {
   if (status) {
     addStatus(status);
@@ -15,7 +21,7 @@ const printAnimals = (animals, status) => {
     clearStatus();
   }
   for (const animal of animals) {
-    printAnimals(animal);
+    printAnimal(animal);
   }
   addStatus("-----");
 };
