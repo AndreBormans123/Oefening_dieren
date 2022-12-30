@@ -14,6 +14,7 @@ const printAnimal = (animal) => {
   );
 };
 
+// als er een twee argument is "status", dan print hij het ook
 const printAnimals = (animals, status) => {
   if (status) {
     addStatus(status);
