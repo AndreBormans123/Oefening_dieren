@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test asychrome / syncrode code</title>
+</head>
+
+<body>
+    <h1>Test asychrome / syncrode code</h1>
+    <script>
+        // Syncroon model = Alles wordt uitgevoerd in de volgorde van wat het geschreven is
+        console.log("Start");
+        let a = 1;
+        console.log(`a = ${a}`)
+        a++;
+        setTimeout(() => { //Syncroon model: wachten
+            a++
+            console.log(`In de eerste timout is a = ${a}`) // wordt als laatste getoond.
+        }, 1000); // 1000 milli of 1 seconden wachten
+        console.log(`a tweede keer = ${a}`)
+        setTimeout(() => { //Syncroon model: wachten
+            a++
+            console.log(`In de tweede timout is a = ${a}`) // wordt als laatste getoond.
+        }, 100);
+        console.log("Einde")
+    </script>
+</body>
+
+</html>

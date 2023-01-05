@@ -1,4 +1,4 @@
-let teller = 1;
+/* let teller = 1;
 
 let animals = [
   { naam: "Donald", type: "Duck", leeftijd: 5 },
@@ -58,3 +58,40 @@ document
 document
   .querySelector("main > button:last-of-type")
   .addEventListener("click", downsizeFarm);
+ */
+
+const adoptAnimal = async () => {
+  const response = await fetch("http://localhost:3000/games", {
+    method: "POST",
+  });
+  const dier = await response.json();
+  addStatus(`Bedankt om ${dier.name} te adopteren`);
+};
+
+const addAnimal = () => {
+  const name = document.getElementById("name").value;
+  const type = document.getElementById("type").value;
+  const age = parseInt(document.getAnimations("age").value);
+
+  const dier = { name, type, age };
+
+  const antwoord = fetch("http://localhost:3000/games", {
+    method: "POST",
+    headers: {
+      accept: "application/json",
+      "content-type": "application.json",
+    },
+    body: JSON.stringify(dier),
+  });
+
+  addStatus(
+    `Dit dier werd toegevoegd: ${dier.name}, en dat is een ${dier.type}`
+  );
+};
+
+document
+  .querySelector("#add-animal-form")
+  .addEventListener("submit", (event) => {
+    event.preventDefault();
+    addAnimal();
+  });

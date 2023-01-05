@@ -17,12 +17,24 @@ const animal3 = {
   leeftijd: 9,
 };
 
-const animals = [animal, animal2, animal3];
+const animals = [];
 
 //To string functie
 const toString = (myAnimal) => {
   return `Name:  ${myAnimal.naam}, type: ${myAnimal.type}, leeftijd: ${myAnimal.leeftijd}`;
 };
+
+const fetchAnimals = async () => {
+  const antwoord = await fetch("http://localhost:3000/games");
+  const resultaat = await antwoord.json();
+  animals.push(...resultaat);
+};
+
+const fetchAndRender = async () => {
+  await fetchAnimals();
+};
+
+fetchAndRender();
 
 const renderAnimals = () => {
   const animalsTable = document.getElementById("animalsTable");
@@ -33,7 +45,7 @@ const renderAnimals = () => {
   });
 };
 
-renderAnimals();
+/* renderAnimals(); */
 
 //printAllAnimals functie (zo kan je twee keer printen met maar één oproeping van de functie ipv twee keer)
 const printAllAnimals = (chars) => {

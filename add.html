@@ -29,12 +29,28 @@
     </header>
     <main>
         <h2>Adopt a random animal</h2>
-        <button>Adopt animal</button>
-        <button>Adopt family duck</button>
-        <button>Adopt downsize farm</button>
+        <button>Adopt</button>
 
         <h2>Animals on the farm</h2>
         <div id="status"></div>
+        <button onclick="adoptAnimal()">Adopt!</button>
+        <form id="add-animal-form">
+            <p>
+                <label for="type">Name</label>
+                <input id="type" type="text">
+            </p>
+            <P>
+                <label for="type">Type</label>
+                <input id="type" type="text">
+            </P>
+            <p>
+                <label for="type">Age</label>
+                <input id="age" type="text" value="22" max="15" min="1">
+            </p>
+            <p>
+                <input type="button" value="Add" id="submit" aria-label="submit">
+            </p>
+        </form>
     </main>
     <footer>Front-end - 2022</footer>
 </body>
