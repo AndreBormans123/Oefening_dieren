@@ -52,3 +52,14 @@ const clearTableRows = ({ tablebody }) =>
 const createTableRow = () => {
   return document.getElementById("tr");
 };
+
+const tableError = ({ tableID, text }) => {
+  const table = document.getElementById(tableID);
+  table.className = "hidden";
+  addStatusError(text);
+};
+
+const addStatusError = (status) => {
+  document.getElementById("status").innerHTML +=
+    "<p class='error'>" + status + "</p>";
+};

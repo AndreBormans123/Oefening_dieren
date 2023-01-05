@@ -73,6 +73,12 @@ const addAnimal = () => {
   const type = document.getElementById("type").value;
   const age = parseInt(document.getAnimations("age").value);
 
+  if (!name || type || age) {
+    addStatusError("No empty values allowed for name, type and age");
+    return;
+  }
+
+  clearStatus();
   const dier = { name, type, age };
 
   const antwoord = fetch("http://localhost:3000/games", {

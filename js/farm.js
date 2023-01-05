@@ -37,12 +37,19 @@ const fetchAndRender = async () => {
 fetchAndRender();
 
 const renderAnimals = () => {
-  const animalsTable = document.getElementById("animalsTable");
-  animals.forEach((animal) => {
-    //higher order functie (een funtie die en andere functie als parameter krijgt)
-    const tableRow = createTableRow();
-    animalsTable.appendChild(tableRow);
-  });
+  if (animals.length() === 0) {
+    addTableError({
+      tableID: "animalsTable",
+      text: "No animals in the farm",
+    });
+  } else {
+    const animalsTable = document.getElementById("animalsTable");
+    animals.forEach((animal) => {
+      //higher order functie (een funtie die en andere functie als parameter krijgt)
+      const tableRow = createTableRow();
+      animalsTable.appendChild(tableRow);
+    });
+  }
 };
 
 /* renderAnimals(); */
