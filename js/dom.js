@@ -1,4 +1,5 @@
-const clearStatus = (status) =>
+// Voor het hoofdstuk DOM
+/* const clearStatus = (status) =>
   (document.getElementById("status").innerHTML = document.getElementById(
     "status"
   ).innerHTML =
@@ -6,9 +7,9 @@ const clearStatus = (status) =>
 
 const addStatus = (status) =>
   (document.getElementById("status").innerHTML =
-    document.getElementById("status").innerHTML + "<p>" + status + "</p>");
+    document.getElementById("status").innerHTML + "<p>" + status + "</p>"); */
 
-const printAnimal = (animal) => {
+/* const printAnimal = (animal) => {
   addStatus(
     `Name: ${animal.naam}; Type: ${animal.type}; Age: ${animal.leeftijd}`
   );
@@ -25,4 +26,29 @@ const printAnimals = (animals, status) => {
     printAnimal(animal);
   }
   addStatus("-----");
+};
+*/
+
+// Na het hoofdstuk DOM
+const clearStatus = (status) =>
+  (document.getElementById("status").innerHTML = document.getElementById(
+    "status"
+  ).innerHTML =
+    "");
+
+const addStatus = (status) =>
+  (document.getElementById("status").innerHTML =
+    document.getElementById("status").innerHTML + "<p>" + status + "</p>");
+
+const addStatic = (stats) =>
+  (document.getElementById("stats").innerHTML = document.getElementById(
+    "stats"
+  ).innerHTML =
+    "");
+
+const clearTableRows = ({ tablebody }) =>
+  (document.getElemerntById(tablebody).innerHTML = "");
+
+const createTableRow = () => {
+  return document.getElementById("tr");
 };

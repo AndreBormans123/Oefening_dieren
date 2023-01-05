@@ -14,7 +14,7 @@ const animal2 = {
 const animal3 = {
   naam: "Bobby",
   type: "hond",
-  leeftijd: 7,
+  leeftijd: 9,
 };
 
 const animals = [animal, animal2, animal3];
@@ -24,8 +24,30 @@ const toString = (myAnimal) => {
   return `Name:  ${myAnimal.naam}, type: ${myAnimal.type}, leeftijd: ${myAnimal.leeftijd}`;
 };
 
+const renderAnimals = () => {
+  const animalsTable = document.getElementById("animalsTable");
+  animals.forEach((animal) => {
+    //higher order functie (een funtie die en andere functie als parameter krijgt)
+    const tableRow = createTableRow();
+    animalsTable.appendChild(tableRow);
+  });
+};
+
+renderAnimals();
+
 //printAllAnimals functie (zo kan je twee keer printen met maar één oproeping van de functie ipv twee keer)
-const printAllAnimals = () => {
+const printAllAnimals = (chars) => {
+  //Manier 3. ForEach gebruikt hier een andere functie
+  animals
+    .filter((animal) =>
+      chars
+        ? animal.naam.toLowerCase().includes(chars.toLowerCase()) // controleren of chars bestaat anders krijg je een foutmelding, heeft chars een waarde?
+        : true
+    ) // filtered, past nooit de orginele array aan.
+    .forEach((animal) => {
+      addStatus(toString(animal));
+    });
+
   //Deze manier niet goed, te veel werk
   /*   addStatus(toString(animal));
   addStatus(toString(animal2)); */
@@ -34,12 +56,12 @@ const printAllAnimals = () => {
   /* for (let i = 0; i < animals.length; i++) addStatus(toString(animals[i])); */
 
   //Manier 2 met een loop, dit is een modernere methode (Dit is hetzelfde als in python de for loop)
-  for (const dier of animals) {
+  /*  for (const dier of animals) {
     addStatus(toString(dier));
-  }
+  } */
 };
 
-printAllAnimals();
+printAllAnimals(); //hier kan je een argument weer geven bv printAllAnimals("al"); en zo zal het filteren.
 
 //Manier 1
 /* addStatus(
@@ -75,9 +97,13 @@ const getAverageAge = () => {
 // dit is wel de juiste manier ookal hebt ge veel data enz
 const shortGetaverage = () => {
   let som = 0; // met let werken, want we gaan straks variabele "som" een nieuwe waarde moeten geven, en met const gaat dat niet
-  for (let i = 0; i < animals.length; i++) {
+  // Deze manier is jusit
+  /* for (let i = 0; i < animals.length; i++) {
     som += animals[i].leeftijd;
-  }
+  } */
+
+  //Dit is de beste en korste manier. 1 lijn, anonieme functie
+  animals.forEach((animal) => (som += animal.leeftijd));
   return (som / animals.length).toFixed(2); // Tofixed(2) rond af op twee decimalen na de komma
 };
 
@@ -135,3 +161,11 @@ addStatus(
       : `Oldest animal is ${result.naam}`
   }`
 ); */
+
+// Sets a footer text using DOM
+const setFooterText = (naam) => {
+  const footerText = document.getElementById("footer-text");
+  footerText.innerHTML = `Front end 2022 - ${naam}`;
+};
+
+setFooterText("Andre Bormans");
